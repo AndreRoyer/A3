@@ -3,7 +3,7 @@ from firebase_admin import credentials, firestore, auth
 from flask import Flask, jsonify, request, render_template
 
 # Inicializando o Firebase com as credenciais baixadas
-cred = credentials.Certificate("trabalho-4516f-firebase-adminsdk-srqvy-b3433af630.json")
+cred = credentials.Certificate("trabalho-4516f-firebase-adminsdk-srqvy-f9cc07ca50.json")
 firebase_admin.initialize_app(cred)
 
 # Inicializando o Firestore
