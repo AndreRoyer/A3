@@ -1,0 +1,95 @@
+/* Geral */
+body {
+    background-size: cover; /* Faz a imagem cobrir toda a tela */
+    font-family: Arial, sans-serif; /* Define uma fonte legível */
+    background-color: #f4f4f9; /* Fundo claro */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: #333; /* Cor padrão do texto */
+
+}
+
+/* Título */
+h1 {
+    font-size: 2.5rem;
+    color: #4a90e2; /* Azul suave */
+    margin-bottom: 20px;
+}
+
+/* Formulário */
+form {
+    background-color: #ffffff; /* Fundo branco */
+    padding: 20px 30px;
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Labels */
+form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+/* Inputs */
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+form input:focus {
+    border-color: #4a90e2;
+    outline: none;
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+}
+
+/* Botão */
+form button {
+    width: 100%;
+    padding: 10px 15px;
+    background-color: #4a90e2; /* Azul */
+    color: #ffffff; /* Texto branco */
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #357ABD; /* Azul mais escuro ao passar o mouse */
+    transform: scale(1.05); /* Aumenta ligeiramente o botão */
+}
+
+form button:active {
+    transform: scale(1); /* Volta ao tamanho normal ao clicar */
+    background-color: #2a5b8a; /* Azul ainda mais escuro */
+}
+a {
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+    color: #ffffff; /* Texto branco */
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #4a90e2; /* Azul no hover */
+}

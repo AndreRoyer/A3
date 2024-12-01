@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <h1>Login</h1>
+    <form method="POST">
+        <label for="email">E-MAIL:</label>
+        <input type="email" id="email" name="email" required><br>
+        <label for="senha">SENHA:</label>
+        <input type="password" id="senha" name="senha" required><br>
+        <button type="button" id="loginButton">Entrar</button>
+    </form>
+
+    <script type="module">
+        
+       import { app,auth } from "./static/firebase.js";
+       import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+
+        // Função de login
+        async function login() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('senha').value;
+
+            try {
+                // Realiza login com email e senha
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+                console.log("Login bem-sucedido:", user);
+                window.location.href = "http://127.0.0.1:5000/get_users_page";
+            } catch (error) {
+                console.error("Erro no login:", error.message);
+                alert("Erro ao realizar login. Verifique suas credenciais.");
+            }
+        }
+
+        // Adiciona evento ao botão de login
+        document.getElementById('loginButton').addEventListener('click', (e) => {
+            e.preventDefault(); // Evita o recarregamento da página
+            login(); // Chama a função de login
+        });
+
+
+    </script>
+</body>
+</html>

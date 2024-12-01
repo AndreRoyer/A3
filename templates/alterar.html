@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atualizar Item</title>
+</head>
+<body>
+  <h1>Atualizar Item</h1>
+
+  <input type="text" id="itemId" placeholder="Digite o ID do item">
+  <input type="text" id="novoNome" placeholder="Digite o novo nome">
+  <button onclick="atualizarItem()">Atualizar Item</button>
+
+  <p id="resultado"></p>
+
+  <p><a href="http://127.0.0.1:5000/get_users_page">Voltar para lista</a></p>
+
+
+  <script type="module" src="static/firebase.js"></script>
+  <script>
+    async function atualizarItem() {
+      const itemId = document.getElementById("itemId").value;
+      const novoNome = document.getElementById("novoNome").value;
+
+      if (!itemId || !novoNome) {
+        alert("Por favor, forneça o ID e o novo nome do item.");
+        return;
+      }
+
+      const data = { id: itemId, nome: novoNome };
+
+      try {
+        const response = await fetch("http://127.0.0.1:5000/atualizar", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),  // Envia os dados como JSON no corpo da requisição
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          document.getElementById("resultado").textContent = result.message;
+        } else {
+          document.getElementById("resultado").textContent = "Erro: " + result.message;
+        }
+      } catch (error) {
+        console.error("Erro ao atualizar o item:", error);
+        document.getElementById("resultado").textContent = "Erro ao tentar atualizar o item.";
+      }
+    }
+  </script>
+</body>
+</html>
