@@ -1,56 +1,168 @@
+/* Geral */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
 }
+
+/* Cabeçalho */
 h1 {
     text-align: center;
     color: #4a90e2;
     margin-top: 20px;
+    font-size: 2.5rem;
 }
+
+/* Tabela */
 #users-table {
-    width: 80%;
+    width: 90%;
+    max-width: 800px;
     margin: 20px auto;
     border-collapse: collapse;
     background: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
 }
+
 #users-table th, #users-table td {
-    padding: 10px;
+    padding: 15px;
     text-align: left;
     border: 1px solid #ddd;
 }
+
 #users-table th {
     background-color: #4a90e2;
     color: white;
+    font-weight: bold;
+    text-transform: uppercase;
 }
+
 #users-table tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
+#users-table tr:hover {
+    background-color: #e8f4fc;
+}
+
+/* Links (Voltar/Alterar Item) */
 a {
-    display: block;
-    margin: 20px auto;
+    display: inline-block;
+    margin: 15px;
     text-align: center;
-    color: #ffffff; /* Texto branco */
-    text-decoration: none; /* Remove o sublinhado */
-    background-color: #4a90e2; /* Fundo azul */
-    padding: 10px 20px; /* Espaçamento interno */
-    border-radius: 5px; /* Bordas arredondadas */
-    font-size: 1rem; /* Tamanho do texto */
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #4a90e2;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
     font-weight: bold;
-    width: fit-content;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 a:hover {
-    background-color: #357ABD; /* Azul mais escuro ao passar o mouse */
-    transform: scale(1.05); /* Aumenta ligeiramente o botão */
+    background-color: #357ABD;
+    transform: scale(1.05);
 }
 
 a:active {
-    background-color: #2a5b8a; /* Azul mais escuro ao clicar */
-    transform: scale(1); /* Volta ao tamanho normal */
+    background-color: #2a5b8a;
+    transform: scale(1);
+}
+
+/* Formulários */
+form {
+    margin: 20px auto;
+    width: 90%;
+    max-width: 800px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+form input[type="text"]:focus {
+    border-color: #4a90e2;
+    outline: none;
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+}
+
+form button {
+    width: 100%;
+    padding: 10px 15px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+form button:hover {
+    background-color: #357ABD;
+    transform: scale(1.02);
+}
+
+form button:active {
+    background-color: #2a5b8a;
+}
+
+/* Resultado da pesquisa */
+#resultado {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 90%;
+}
+
+.item {
+    padding: 10px;
+    background-color: #f4f4f4;
+    margin-bottom: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    #users-table th, #users-table td {
+        padding: 10px;
+    }
+
+    form {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
 }

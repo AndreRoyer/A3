@@ -12,6 +12,7 @@ db = firestore.client()
 # Inicializando o Flask
 app = Flask(__name__)
 
+# Rota inicial (homepage)
 @app.route('/')
 def homepage():
     return render_template("homepage.html")
@@ -33,7 +34,7 @@ def add_user():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-# Rota de exemplo para pegar todos os usuários do Firestore
+# Rota para pegar todos os usuários do Firestore
 @app.route('/get_users', methods=['GET'])
 def get_users():    
     try:
@@ -44,12 +45,13 @@ def get_users():
         return jsonify(users_list), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-    
+
+# Rota para exibir a página com os usuários
 @app.route('/get_users_page')
 def get_users_page():
     return render_template("get_users.html")
 
-
+# Rota para buscar um item no Firestore
 @app.route('/buscar', methods=['GET'])
 def buscar_item():
     nome = request.args.get('item')  # Obtém o parâmetro 'nome' da query string
@@ -72,7 +74,7 @@ def buscar_item():
 
     return jsonify(itens)
 
-
+# Rota para atualizar um item no Firestore
 @app.route('/atualizar', methods=['PUT'])
 def atualizar_item():
     # Obtém os dados da requisição
@@ -94,7 +96,7 @@ def atualizar_item():
 
     return jsonify({'message': f'Item com ID {item_id} atualizado com sucesso!'}), 200
     
-
+# Rota para exibir a página de alteração
 @app.route('/alterar')
 def alterar():
     return render_template("alterar.html")

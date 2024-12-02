@@ -1,5 +1,4 @@
-
-// Fazendo a requisição para a API
+// Faz uma requisição para a API para obter a lista de usuários
 fetch('/get_users')
     .then(response => {
         if (!response.ok) {
@@ -30,9 +29,9 @@ fetch('/get_users')
     });
 
 
-
+// Adiciona item ao formulário de cadastro
 document.getElementById("cadastrarIten").addEventListener("submit", async function (e) {
-    e.preventDefault(); // Impede o envio padrão do formulário
+    e.preventDefault();
     
     const item = document.getElementById("cadastrar").value;
     
@@ -59,3 +58,45 @@ document.getElementById("cadastrarIten").addEventListener("submit", async functi
     });
 
     
+// Função para pesquisar itens
+async function pesquisarItens() {
+    const nomeItem = document.getElementById("barraPesquisa").value;
+    
+    if (nomeItem.trim() === "") {
+        document.getElementById("resultado").innerHTML = ""; 
+        return;
+    }
+
+    try {
+        const response = await fetch(`http://127.0.0.1:5000/buscar?item=${nomeItem}`);
+        const data = await response.json();
+        
+        if (response.ok) {
+        mostrarResultados(data);
+        } else {
+        document.getElementById("resultado").innerHTML = `<p>${data.message}</p>`;
+        }
+    } catch (error) {
+        console.error("Erro ao buscar itens:", error);
+        document.getElementById("resultado").innerHTML = "<p style='color: red;'>Erro ao buscar itens.</p>";
+    }
+    }
+
+// Função para exibir os resultados da busca na tela
+    function mostrarResultados(itens) {
+    const resultadoDiv = document.getElementById("resultado");
+    resultadoDiv.innerHTML = "";  // Limpa resultados anteriores
+
+    if (itens.length === 0) {
+        resultadoDiv.innerHTML = "<p>Nenhum item encontrado.</p>";
+        return;
+    }
+
+// Itera sobre os itens encontrados e os exibe na tela
+    itens.forEach(users => {
+        const itemDiv = document.createElement("div");
+        itemDiv.classList.add("item");
+        itemDiv.innerHTML = `<strong>${users.item}</strong> (ID: ${users.id})`;
+        resultadoDiv.appendChild(itemDiv);
+    });
+    }
